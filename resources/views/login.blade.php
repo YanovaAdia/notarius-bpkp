@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Aplikasi Aktivitas Harian</title>
+    <link rel="shortcut icon" type="image/png" href="assets/images/logos/logobpkp.png" />
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -26,10 +27,10 @@
 
         <!-- Bagian Kanan -->
         <div class="login-right">
-            <img src="images/logo.png" alt="Logo Perusahaan" class="logo">
+            <img src="assets/images/logos/logobpkp.png" alt="Logo Perusahaan" class="logo">
             <h3>Welcome to</h3>
             <h1>Employee Daily Activity</h1>
-            <img src="images/image.png" alt="Ilustrasi" class="illustration">
+            <img src="assets/images/login/image.png" alt="Ilustrasi" class="illustration">
         </div>
     </div>
 </body>

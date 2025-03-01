@@ -135,6 +135,29 @@
             display: block;
             padding: 10px 20px;
         }
+        
+        .foto-profil {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #16B364;
+        }
+
+        .card-title {
+            font-size: 24px !important;
+            font-weight: bold;
+        }
+
+        .judul-isi {
+            font-size: 20px !important;
+            font-weight: 600;
+        }
+
+        .subjudul-isi {
+            font-size: 16px !important;
+            color: gray;
+        }
     </style>
 </head>
 
@@ -147,7 +170,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="home.blade.php" class="text-nowrap logo-img">
+                    <a href="/home" class="text-nowrap logo-img">
                         <img src="assets/images/logos/logobpkp.png" alt="" class="logo-bpkp" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -158,19 +181,19 @@
                 <nav class="sidebar-nav scroll-sidebar mt-4" data-simplebar="">
                     <ul id="sidebarnav">
                         <li class="sidebar-item mb-3">
-                            <a class="sidebar-link">
+                            <a class="sidebar-link" href="/profil">
                                 <img src="assets/images/profile/user-1.jpg" class="gambar-profile">
                                 <span class="hide-menu"> ARIS A.Md </span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="home.blade.php" aria-expanded="false">
+                            <a class="sidebar-link" href="/home" aria-expanded="false">
                                 <i class="bi bi-house fs-5"></i>
                                 <span class="hide-menu">HOME</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link justify-content-between" href="daftar.blade.php" aria-expanded="false">
+                            <a class="sidebar-link justify-content-between" href="/daftar" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-3">
                                     <i class="bi bi-list-task fs-5"></i>
                                     <span class="hide-menu">DAFTAR AKTIVITAS</span>
@@ -178,7 +201,7 @@
                             </a>
                         </li>
                         <div class="sidebar-logout">
-                            <a class="sidebar-link justify-content-between" href="" aria-expanded="false">
+                            <a class="sidebar-link justify-content-between" href="{{ route('logout') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-3">
                                     <i class="bi bi-box-arrow-right fs-5"></i>
                                     <span class="hide-menu">LOGOUT</span>

@@ -109,7 +109,7 @@
             display: block;
             padding: 10px 20px;
         }
-        
+
         .foto-profil {
             width: 200px;
             height: 200px;
@@ -175,7 +175,8 @@
                             </a>
                         </li>
                         <div class="sidebar-logout">
-                            <a class="sidebar-link justify-content-between" href="{{ route('logout') }}" aria-expanded="false">
+                            <a class="sidebar-link justify-content-between" href="{{ route('logout') }}"
+                                aria-expanded="false">
                                 <div class="d-flex align-items-center gap-3">
                                     <i class="bi bi-box-arrow-right fs-5"></i>
                                     <span class="hide-menu">LOGOUT</span>
@@ -211,147 +212,55 @@
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5 class="card-title fw-semibold mb-4">To Do List Activity</h5>
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h3 class="judul-isi"> Reviu Dokumen </h3>
-                                            <h5 class="subjudul-isi"> Tugas reviu dokumen dinas Kelautan dan Perikanan
-                                                Provinsi Jawa Timur
-                                            </h5>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <i class="bi bi-arrow-down-short detail-toggle"></i>
-                                            <span class="detail"> Detail </span>
-                                        </div>
+                            <h3 class="card-title fw-semibold mb-4">PROFIL</h3>
+                            <hr>
+                            <div class="row align-items-center">
+                                <!-- Bagian Kiri -->
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <h3 class="judul-isi">NIP</h3>
+                                        <h5 class="subjudul-isi">1234567898765432</h5>
                                     </div>
-
                                     <hr>
-
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h3 class="judul-isi"> Rapat dengan SDM </h3>
-                                            <h5 class="subjudul-isi"> Rapat dengan SDM untuk membahas aturan berlaku
-                                            </h5>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <i class="bi bi-arrow-down-short detail-toggle"></i>
-                                            <span class="detail"> Detail </span>
-                                        </div>
+                                    <div class="mb-3">
+                                        <h3 class="judul-isi">Nama Lengkap</h3>
+                                        <h5 class="subjudul-isi">Aris A.Md.</h5>
                                     </div>
-
                                     <hr>
-
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h3 class="judul-isi"> Diskusi Internal </h3>
-                                            <h5 class="subjudul-isi"> Diskusi Internal kelanjutan dari rapat dengan SDM
-                                            </h5>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <i class="bi bi-arrow-down-short detail-toggle"></i>
-                                            <span class="detail"> Detail </span>
-                                        </div>
+                                    <div class="mb-3">
+                                        <h3 class="judul-isi">Jabatan</h3>
+                                        <h5 class="subjudul-isi">Pranata Komputer Terampil</h5>
                                     </div>
-
                                     <hr>
-
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h3 class="judul-isi"> Helpdesk </h3>
-                                            <h5 class="subjudul-isi"> Melakukan layanan dukungan teknis yang berperan
-                                                penting dalam menjaga
-                                                kelancaran operasional </h5>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <i class="bi bi-arrow-down-short detail-toggle"></i>
-                                            <span class="detail"> Detail </span>
-                                        </div>
-                                    </div>
-
-                                    <hr>
-
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h3 class="judul-isi"> Inspeksi </h3>
-                                            <h5 class="subjudul-isi"> Inspeksi di Dinas DPMPTSP </h5>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <i class="bi bi-arrow-down-short detail-toggle"></i>
-                                            <span class="detail"> Detail </span>
-                                        </div>
-                                    </div>
-
-                                    <hr>
-
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h3 class="judul-isi"> Laporan pertanggung jawaban </h3>
-                                            <h5 class="subjudul-isi"> Mengerjakan laporan pertanggung jawaban ditunggu
-                                                sampai tanggal 3 Maret
-                                                2025 </h5>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <i class="bi bi-arrow-down-short detail-toggle"></i>
-                                            <span class="detail"> Detail </span>
-                                        </div>
-                                    </div>
-
-                                    <hr>
-
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h3 class="judul-isi"> Audit </h3>
-                                            <h5 class="subjudul-isi"> Melakukan audit investigasi </h5>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <i class="bi bi-arrow-down-short detail-toggle"></i>
-                                            <span class="detail"> Detail </span>
-                                        </div>
-                                    </div>
-
-                                    <hr>
-
-                                    <div id="global-detail" class="detail-content" style="display: none;">
-                                        <hr>
-                                        <div class="mb-4">
-                                            <label class="form-label">Isu atau permasalahan yang ditemukan</label>
-                                            <textarea class="form-control" rows="3"
-                                                placeholder="Isilan isu atau permasalahan yang ditemukan"></textarea>
-                                            <label class="form-label">Solusi dari permasalahan yang ditemukan</label>
-                                            <textarea class="form-control" rows="3"
-                                                placeholder="Isilan solusi dari permasalahan yang ditemukan"></textarea>
-                                            <button type="button" class="btn btn-success mt-3">Simpan</button>
-                                        </div>
-                                    </div>
-                                    <h5 class="show-more"> Show More </h5>
+                                </div>
+                                <!-- Bagian Kanan (Foto Profil) -->
+                                <div class="col-md-4 text-center">
+                                    <img src="assets/images/profile/user-1.jpg" class="foto-profil">
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const today = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const formattedDate = today.toLocaleDateString('id-ID', options); // Format tanggal sesuai dengan lokal Indonesia
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const formattedDate = today.toLocaleDateString('id-ID',
+                options); // Format tanggal sesuai dengan lokal Indonesia
             document.getElementById('current-date').textContent = `Hari ini tanggal ${formattedDate}`;
 
 
             const checkIcons = document.querySelectorAll('.bi-check-circle-fill');
-            checkIcons.forEach(function (checkIcon) {
-                checkIcon.addEventListener('click', function () {
+            checkIcons.forEach(function(checkIcon) {
+                checkIcon.addEventListener('click', function() {
                     this.classList.toggle('active');
                 });
             });
@@ -360,8 +269,8 @@
             const globalDetail = document.getElementById('global-detail');
             let activeToggle = null;
 
-            detailToggles.forEach(function (toggle) {
-                toggle.addEventListener('click', function () {
+            detailToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function() {
                     const parentRow = this.closest('.col-12');
                     const isDetailVisible = globalDetail.style.display === 'block';
                     if (isDetailVisible && activeToggle === this) {

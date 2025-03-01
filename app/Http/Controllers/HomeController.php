@@ -20,4 +20,9 @@ class HomeController extends Controller
     {
         return view('form');
     }
+
+    public function profil()
+    {
+        return view('profil');
+    }
 }

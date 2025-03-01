@@ -20,3 +20,6 @@ Route::middleware(['auth'])->get('/dashboard', function () {
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('/daftar', [HomeController::class, 'daftar'])->name('daftar');
 Route::get('/form', [HomeController::class, 'form'])->name('form');
+Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
+
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
