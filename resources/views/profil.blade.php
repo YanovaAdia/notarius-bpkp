@@ -157,7 +157,7 @@
                         <li class="sidebar-item mb-3">
                             <a class="sidebar-link" href="/profil">
                                 <img src="assets/images/profile/user-1.jpg" class="gambar-profile">
-                                <span class="hide-menu"> ARIS A.Md </span>
+                                <span class="hide-menu"> {{ Auth::user() !== null ? Auth::user()->name : 'user' }} </span>
                             </a>
                         </li>
                         <li class="sidebar-item">
