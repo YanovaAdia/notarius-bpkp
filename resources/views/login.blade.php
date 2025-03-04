@@ -14,9 +14,20 @@
         <!-- Bagian Kiri -->
         <div class="login-left">
             <h2>Log In</h2>
-            <form action="#" method="POST">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+            @if ($errors->any())
+                <div>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>Error: {{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" required>
 
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>

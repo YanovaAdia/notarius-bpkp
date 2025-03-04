@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
 
 class LoginController extends Controller
@@ -14,24 +13,26 @@ class LoginController extends Controller
     {
         return view('login');
     }
-    
+
     public function login(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-    
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->intended('/dashboard');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('home');
         }
-    
-        return back()->withErrors(['email' => 'Invalid credentials']);
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect()->route('login');
     }
 }

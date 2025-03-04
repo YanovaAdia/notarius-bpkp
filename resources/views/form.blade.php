@@ -226,7 +226,7 @@
                         </li>
                         <li class="nav-item">
                             <h3 class="judul-app"> Aplikasi Aktivitas Harian </h3>
-                            <h5 class="sub-judulapp"> Welcome back, User Manager!</h5>
+                            <h5 class="sub-judulapp"> Welcome back, {{ Auth::user() !== null ? Auth::user()->name : 'user manager' }}!</h5>
                             <h5 id="current-date" class="sub-judulapp"> Hari ini tanggal </h5>
                         </li>
                     </ul>
