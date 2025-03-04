@@ -219,17 +219,17 @@
                                 <div class="col-md-8">
                                     <div class="mb-3">
                                         <h3 class="judul-isi">NIP</h3>
-                                        <h5 class="subjudul-isi">1234567898765432</h5>
+                                        <h5 class="subjudul-isi">{{ Auth::user() !== null ? Auth::user()->nip : 'user_nip' }}</h5>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <h3 class="judul-isi">Nama Lengkap</h3>
-                                        <h5 class="subjudul-isi">Aris A.Md.</h5>
+                                        <h5 class="subjudul-isi">{{ Auth::user() !== null ? Auth::user()->name : 'user_fullname' }}</h5>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <h3 class="judul-isi">Jabatan</h3>
-                                        <h5 class="subjudul-isi">Pranata Komputer Terampil</h5>
+                                        <h5 class="subjudul-isi">{{ Auth::user() !== null ? Auth::user()->jabatan : 'user_profession' }}</h5>
                                     </div>
                                     <hr>
                                 </div>
