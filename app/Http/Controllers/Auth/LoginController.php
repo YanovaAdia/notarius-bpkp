@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'nip' => 'required',
             'password' => 'required',
         ]);
 
@@ -26,7 +26,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'nip' => 'The provided credentials do not match our records.',
         ]);
     }
 

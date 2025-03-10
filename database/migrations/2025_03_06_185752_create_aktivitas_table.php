@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal');
             $table->string('nama_aktivitas');
-            $table->string('detail_aktivitas');
-            $table->string('issue');
-            $table->string('solusi');
+            $table->string('instruksi_aktivitas')->nullable();
+            $table->string('detail_aktivitas')->nullable();
+            $table->string('issue')->nullable();
+            $table->string('solusi')->nullable();
             $table->enum('status', ['belum', 'selesai'])->default('belum');
             $table->string('nip');
             $table->unsignedBigInteger('id_tim');

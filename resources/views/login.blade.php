@@ -26,8 +26,8 @@
 
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-                <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" required>
+                <label for="nip">NIP</label>
+                <input type="text" id="nip" name="nip" required>
 
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>

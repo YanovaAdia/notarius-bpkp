@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Aplikasi Aktivitas Harian</title>
-    <link rel="shortcut icon" type="image/png" href="./assets/images/logos/logobpkp.png" />
-    <link rel="stylesheet" href="./assets/css/styles.min.css" />
+    <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/logobpkp.png" />
+    <link rel="stylesheet" href="../../assets/css/styles.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         .logo-bpkp {
@@ -105,7 +105,7 @@
         }
 
         #search-input::placeholder {
-            color: black;
+            color: white;
             opacity: 1;
         }
 
@@ -135,10 +135,6 @@
             display: block;
             padding: 10px 20px;
         }
-
-        .btn-cetak {
-            background-color: #072ef07d;
-        }
     </style>
 </head>
 
@@ -152,7 +148,7 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="{{ route('home') }}" class="text-nowrap logo-img">
-                        <img src="./assets/images/logos/logobpkp.png" alt="" class="logo-bpkp" />
+                        <img src="../../assets/images/logos/logobpkp.png" alt="" class="logo-bpkp" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -163,7 +159,7 @@
                     <ul id="sidebarnav">
                         <li class="sidebar-item mb-3">
                             <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
-                                <img src="./assets/images/profile/{{ Auth::user()->foto_profil }}" class="gambar-profile">
+                                <img src="../../assets/images/profile/{{ Auth::user()->foto_profil }}" class="gambar-profile">
                                 <span class="hide-menu"> {{ Auth::user()->name }} </span>
                             </a>
                         </li>
@@ -218,112 +214,40 @@
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card" style="background-color: #D3E2EF; margin-bottom: 0px; border-radius: 0%;">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <input type="text" class="form-control" id="search-input"
-                                                placeholder="Search Activity"
-                                                style="border-color: black; color: black; background-color :white;">
-                                        </div>
-                                        <div class="col-3">
-                                            <input type="date" class="form-control" id="date-filter"
-                                                style="border-color: black; color: black; background-color :white;">
-                                        </div>
-                                        <div class="col-2">
-                                            <select class="form-select" id="status-filter"
-                                                aria-label="Default select example"
-                                                style="border-color: black; color: black; background-color :white;">
-                                                <option selected style="color: black">Status</option>
-                                                <option value="Belum" style="color: black">Belum</option>
-                                                <option value="Selesai" style="color: black">Selesai</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-2">
-                                            <select class="form-select" aria-label="Default select example"
-                                                id="data-limit"
-                                                style="border-color: black; color: black; background-color :white;">
-                                                <option value="5" style="color: black">5</option>
-                                                <option value="10" style="color: black">10</option>
-                                                <option value="15" style="color: black">15</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-2">
-                                            <button type="button" class="btn btn-cetak" style="width: 125px; " onClick="window.location='{{ route('aktivitas.cetak') }}?searchInput='+document.querySelector('#search-input').value+'&dateFilter='+document.querySelector('#date-filter').value+'&statusFilter='+document.querySelector('#status-filter').value">
-                                                <i class="bi bi-printer"></i> Cetak
-                                            </button>
-                                        </div>
-                                    </div>
+                            <h5 class="card-title fw-semibold mb-4">Form To Do List Activity</h5>
+                            <form action="{{ route('aktivitas.update', $aktivitas->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="col-12 mb-3">
+                                    <label for="nama_aktivitas" class="form-label">Judul Aktivitas</label>
+                                    <input type="text" class="form-control" name="nama_aktivitas" placeholder="Input Judul Aktivitas" value="{{ $aktivitas->nama_aktivitas }}">
                                 </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-dark mb-0 custom-table">
-                                    <thead>
-                                        <tr class="fs-2" style="vertical-align: middle; text-align: center">
-                                            <th style="width: 50px; padding: 10px 10px;">No</th>
-                                            <th style="width: 400px; padding: 10px 10px;">To Do List Activity</th>
-                                            <th style="width: 100px; padding: 10px 10px;">Date</th>
-                                            <th style="width: 100px; padding: 10px 10px;">Status</th>
-                                            <th style="width: 100px; padding: 10px 10px;">User</th>
-                                            <th style="width: 100px; padding: 10px 10px;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="fs-2">
-                                        @foreach ($aktivitas_user as $aktivitas)
-                                            <tr>
-                                                <td style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                    {{ $loop->iteration }}
-                                                </td>
-                                                <td>
-                                                    {{ $aktivitas->nama_aktivitas }}
-                                                    <br>
-                                                    {{ $aktivitas->instruksi_aktivitas }}
-                                                </td>
-                                                <td style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                    {{ \Carbon\Carbon::parse($aktivitas->tanggal)->locale(app()->getLocale())->isoFormat('DD/MM/YYYY') }}
-                                                </td>
-                                                <td style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                    {{ ucfirst($aktivitas->status) }}
-                                                </td>
-                                                <td style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                    {{ $aktivitas->name }}
-                                                </td>
-                                                <td style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                    <button class="btn btn-primary btn-detail" data-detail-aktivitas="{{ $aktivitas->detail_aktivitas }}" data-issue="{{ $aktivitas->issue }}" data-solusi="{{ $aktivitas->solusi }}">Detail</button>
-                                                </td>
-                                            </tr>
+                                <div class="col-12 mb-3">
+                                    <label for="instruksi_aktivitas" class="form-label">Instruksi Aktivitas</label>
+                                    <textarea class="form-control" rows="4" name="instruksi_aktivitas" placeholder="Input Instruksi Aktivitas">{{ $aktivitas->instruksi_aktivitas }}</textarea>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="tanggal" class="form-label">Tanggal</label>
+                                    <input type="date" class="form-control" name="tanggal" value="{{ $aktivitas->tanggal }}">
+                                </div>
+                                <button type="submit" class="btn btn-success mb-3">Update</button>
+                            </form>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
                                         @endforeach
-                                    </tbody>
-                                </table>
-
-                                <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="detailModalLabel">Detail Aktivitas</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p id="detail-aktivitas-content"></p>
-                                            <p id="issue-content"></p>
-                                            <p id="solusi-content"></p>
-                                        </div>
-                                        </div>
-                                    </div>
+                                    </ul>
                                 </div>
-
-                                <div id="pagination" class="pagination mt-5 justify-content-center">
-                                    <button id="prev" class="btn btn-primary" disabled>Prev</button>
-                                    <span id="page-numbers"></span>
-                                    <button id="next" class="btn btn-primary">Next</button>
-                                </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const today = new Date();
@@ -349,7 +273,6 @@
                 const selectedStatus = statusFilter.value;
                 const selectedDate = dateFilter.value;
                 const dataLimit = parseInt(dataLimitSelect.value);
-                rowsPerPage = dataLimit;
 
                 let displayedCount = 0;
                 let filteredRows = [];
@@ -381,25 +304,10 @@
                 const start = (currentPage - 1) * rowsPerPage;
                 const end = start + rowsPerPage;
 
-                tableRows.forEach((row, index) => {
-                    row.style.display = 'none';
-                }); // Sembunyikan semua baris
+                tableRows.forEach(row => row.style.display = 'none'); // Sembunyikan semua baris
 
-                filteredRows.slice(start, end).forEach((row, index) => {
+                filteredRows.slice(start, end).forEach(row => {
                     row.style.display = ''; // Tampilkan baris yang sesuai
-                    if (index % 2 === 0) {
-                        const tds = row.querySelectorAll('td');
-                        tds.forEach(td => {
-                            td.style.backgroundColor = '#3e54a0';
-                            td.style.color = "white";
-                        });
-                    } else {
-                        const tds = row.querySelectorAll('td');
-                        tds.forEach(td => {
-                            td.style.backgroundColor = '#e1e7ff';
-                            td.style.color = "#0d375b";
-                        });
-                    }
                 });
             }
 
@@ -410,9 +318,6 @@
                     const pageButton = document.createElement('button');
                     pageButton.textContent = i;
                     pageButton.className = 'btn btn-light';
-                    if (i === currentPage) {
-                        pageButton.classList.add('active');
-                    }
                     pageButton.onclick = function () {
                         currentPage = i;
                         filterTable(); // Panggil filterTable untuk menampilkan baris yang sesuai
@@ -443,22 +348,10 @@
                 filterTable();
             }
 
-            searchInput.addEventListener('input', function(){
-                currentPage = 1;
-                filterTable();
-            });
-            statusFilter.addEventListener('change', function(){
-                currentPage = 1;
-                filterTable();
-            });
-            dateFilter.addEventListener('change', function(){
-                currentPage = 1;
-                filterTable();
-            });
-            dataLimitSelect.addEventListener('change', function(){
-                currentPage = 1;
-                filterTable();
-            });
+            searchInput.addEventListener('input', filterTable);
+            statusFilter.addEventListener('change', filterTable);
+            dateFilter.addEventListener('change', filterTable);
+            dataLimitSelect.addEventListener('change', filterTable);
 
             setDefaultDisplay();
 
@@ -492,33 +385,15 @@
                     activeToggle = this;
                 });
             });
-
-            // Penambahan Modal Detail
-            const detailButtons = document.querySelectorAll('.btn-detail');
-
-            detailButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const detailAktivitas = button.getAttribute('data-detail-aktivitas');
-                    const issue = button.getAttribute('data-issue');
-                    const solusi = button.getAttribute('data-solusi');
-                    
-                    document.getElementById('detail-aktivitas-content').innerText = 'Detail Aktivitas : ' + detailAktivitas;
-                    document.getElementById('issue-content').innerText = 'Issue : ' + issue;
-                    document.getElementById('solusi-content').innerText = 'Solusi : ' + solusi;
-
-                    const modal = new bootstrap.Modal(document.getElementById('detailModal'));
-                    modal.show();
-                });
-            });
         });
     </script>
 
 
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/sidebarmenu.js"></script>
-    <script src="../assets/js/app.min.js"></script>
-    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src=".../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src=".../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src=".../../assets/js/sidebarmenu.js"></script>
+    <script src=".../../assets/js/app.min.js"></script>
+    <script src=".../../assets/libs/simplebar/dist/simplebar.js"></script>
     <!-- solar icons -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>

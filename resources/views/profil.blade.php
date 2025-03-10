@@ -156,7 +156,7 @@
                     <ul id="sidebarnav">
                         <li class="sidebar-item mb-3">
                             <a class="sidebar-link" href="/profil">
-                                <img src="assets/images/profile/user-1.jpg" class="gambar-profile">
+                                <img src="assets/images/profile/{{ Auth::user()->foto_profil }}" class="gambar-profile">
                                 <span class="hide-menu"> {{ Auth::user() !== null ? Auth::user()->name : 'user' }} </span>
                             </a>
                         </li>
@@ -235,7 +235,7 @@
                                 </div>
                                 <!-- Bagian Kanan (Foto Profil) -->
                                 <div class="col-md-4 text-center">
-                                    <img src="assets/images/profile/user-1.jpg" class="foto-profil">
+                                    <img src="assets/images/profile/{{ Auth::user() !== null ? Auth::user()->foto_profil : 'user-1.jpg' }}" class="foto-profil">
                                 </div>
                             </div>
                         </div>

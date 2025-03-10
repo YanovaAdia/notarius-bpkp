@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Aplikasi Aktivitas Harian</title>
-    <link rel="shortcut icon" type="image/png" href="assets/images/logos/logobpkp.png" />
-    <link rel="stylesheet" href="assets/css/styles.min.css" />
+    <link rel="shortcut icon" type="image/png" href="./assets/images/logos/logobpkp.png" />
+    <link rel="stylesheet" href="./assets/css/styles.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         .logo-bpkp {
@@ -135,29 +135,6 @@
             display: block;
             padding: 10px 20px;
         }
-        
-        .foto-profil {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #16B364;
-        }
-
-        .card-title {
-            font-size: 24px !important;
-            font-weight: bold;
-        }
-
-        .judul-isi {
-            font-size: 20px !important;
-            font-weight: 600;
-        }
-
-        .subjudul-isi {
-            font-size: 16px !important;
-            color: gray;
-        }
     </style>
 </head>
 
@@ -170,8 +147,8 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="/home" class="text-nowrap logo-img">
-                        <img src="assets/images/logos/logobpkp.png" alt="" class="logo-bpkp" />
+                    <a href="{{ route('home') }}" class="text-nowrap logo-img">
+                        <img src="./assets/images/logos/logobpkp.png" alt="" class="logo-bpkp" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -181,19 +158,19 @@
                 <nav class="sidebar-nav scroll-sidebar mt-4" data-simplebar="">
                     <ul id="sidebarnav">
                         <li class="sidebar-item mb-3">
-                            <a class="sidebar-link" href="/profil">
-                                <img src="assets/images/profile/user-1.jpg" class="gambar-profile">
-                                <span class="hide-menu"> {{ Auth::user() !== null ? Auth::user()->name : 'user' }} </span>
+                            <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
+                                <img src="./assets/images/profile/{{ Auth::user()->foto_profil }}" class="gambar-profile">
+                                <span class="hide-menu"> {{ Auth::user()->name }} </span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/home" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                                 <i class="bi bi-house fs-5"></i>
                                 <span class="hide-menu">HOME</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link justify-content-between" href="/daftar" aria-expanded="false">
+                            <a class="sidebar-link justify-content-between" href="{{ route('daftar') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center gap-3">
                                     <i class="bi bi-list-task fs-5"></i>
                                     <span class="hide-menu">DAFTAR AKTIVITAS</span>
@@ -226,7 +203,7 @@
                         </li>
                         <li class="nav-item">
                             <h3 class="judul-app"> Aplikasi Aktivitas Harian </h3>
-                            <h5 class="sub-judulapp"> Welcome back, {{ Auth::user() !== null ? Auth::user()->name : 'user manager' }}!</h5>
+                            <h5 class="sub-judulapp"> Welcome back, {{ Auth::user()->name }}!</h5>
                             <h5 id="current-date" class="sub-judulapp"> Hari ini tanggal </h5>
                         </li>
                     </ul>
@@ -238,294 +215,39 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title fw-semibold mb-4">Form To Do List Activity</h5>
-                            <div class="col-12 mb-3">
-                                <label for="judul" class="form-label">Judul Aktivitas</label>
-                                <input type="text" class="form-control" id="" placeholder="Input Judul Aktivitas">
-                            </div>
-                            <div class="col-12 mb-3">
-                                <label for="detail" class="form-label">Detail Aktivitas</label>
-                                <textarea class="form-control" id="" rows="3"
-                                    placeholder="Input Detail Aktivitas"></textarea>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <label for="judul" class="form-label">Tanggal</label>
-                                <input type="date" class="form-control" id="">
-                            </div>
-                            <div class="col-12 mb-3">
-                                <label for="judul" class="form-label">ID Pegawai</label>
-                                <input type="text" class="form-control" id="" placeholder="Input ID Pegawai">
-                            </div>
-                            <div class="col-12 mb-4">
-                                <label for="judul" class="form-label">Nama Pegawai</label>
-                                <input type="text" class="form-control" id="" placeholder="Input Nama Pegawai">
-                            </div>
-                            <button type="button" class="btn btn-success mb-3">Simpan</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card" style="background-color: #3e54a0;">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <input type="text" class="form-control" id="search-input"
-                                                placeholder="Search Activity" style="border-color: white; color: white">
-                                        </div>
-                                        <div class="col-3">
-                                            <input type="date" class="form-control" id="date-filter"
-                                                style="border-color: white; color: white">
-                                        </div>
-                                        <div class="col-3">
-                                            <select class="form-select" id="status-filter"
-                                                aria-label="Default select example"
-                                                style="border-color: white; color: white">
-                                                <option selected style="color: black">Status</option>
-                                                <option value="Progress" style="color: black">Progress</option>
-                                                <option value="Selesai" style="color: black">Selesai</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-2">
-                                            <select class="form-select" aria-label="Default select example"
-                                                id="data-limit" style="border-color: white; color: white">
-                                                <option value="5" style="color: black">5</option>
-                                                <option value="10" style="color: black">10</option>
-                                                <option value="15" style="color: black">15</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                            <form action="{{ route('aktivitas.store') }}" method="POST">
+                                @csrf
+                                <div class="col-12 mb-3">
+                                    <label for="nama_aktivitas" class="form-label">Judul Aktivitas</label>
+                                    <input type="text" class="form-control" name="nama_aktivitas" placeholder="Input Judul Aktivitas">
                                 </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-dark mb-0 custom-table">
-                                    <thead>
-                                        <tr class="fs-2" style="vertical-align: middle; text-align: center">
-                                            <th style="width: 30px; padding: 10px 10px;">No</th>
-                                            <th style="width: 200px; padding: 10px 10px;">To Do List Activity</th>
-                                            <th style="width: 70px; padding: 10px 10px;">Date</th>
-                                            <th style="width: 50px; padding: 10px 10px;">Status</th>
-                                            <th style="width: 50px; padding: 10px 10px;">User</th>
-                                            <th style="width: 50px; padding: 10px 10px;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="fs-2">
-                                        <tr>
-                                            <th
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                1
-                                            </th>
-                                            <th>Reviu Dokumen <br> Tugas reviu dokumen dinas Kelautan dan Perikanan
-                                                Provinsi Jawa Timur</th>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                26/02/2025
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Selesai
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Aris A.Md
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pen"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                2
-                                            </th>
-                                            <th>Rapat dengan SDM <br> Rapat dengan SDM untuk membahas aturan berlaku
-                                            </th>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                26/02/2025
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Selesai
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Mark Lee
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pen"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                3
-                                            </th>
-                                            <th>Diskusi Internal <br> Rapat dengan SDM untuk membahas aturan berlaku
-                                            </th>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                26/02/2025
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Selesai
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Aris A.Md
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pen"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                4
-                                            </th>
-                                            <th>Reviu Dokumen <br> Tugas reviu dokumen dinas Kelautan dan Perikanan
-                                                Provinsi Jawa Timur</th>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                26/02/2025
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Selesai
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Aris A.Md
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pen"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                5
-                                            </th>
-                                            <th>Reviu Dokumen <br> Tugas reviu dokumen dinas Kelautan dan Perikanan
-                                                Provinsi Jawa Timur</th>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                26/02/2025
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Progress
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Aris A.Md
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pen"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                6
-                                            </th>
-                                            <th>Reviu Dokumen <br> Tugas reviu dokumen dinas Kelautan dan Perikanan
-                                                Provinsi Jawa Timur</th>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                26/02/2025
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Progress
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Aris A.Md
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pen"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                7
-                                            </th>
-                                            <th>Reviu Dokumen <br> Tugas reviu dokumen dinas Kelautan dan Perikanan
-                                                Provinsi Jawa Timur</th>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                28/02/2025
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Progress
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                Aris A.Md
-                                            </td>
-                                            <td
-                                                style="text-align: center; width: 30px; padding: 0px 10px; vertical-align: middle;">
-                                                <button type="button" class="btn btn-danger btn-sm">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pen"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <div id="pagination" class="pagination mt-5 justify-content-center">
-                                    <button id="prev" class="btn btn-primary" disabled>Prev</button>
-                                    <span id="page-numbers"></span>
-                                    <button id="next" class="btn btn-primary">Next</button>
+                                <div class="col-12 mb-3">
+                                    <label for="instruksi_aktivitas" class="form-label">Instruksi Aktivitas</label>
+                                    <textarea class="form-control" rows="4" name="instruksi_aktivitas" placeholder="Input Instruksi Aktivitas"></textarea>
                                 </div>
-                            </div>
+                                <div class="col-12 mb-3">
+                                    <label for="tanggal" class="form-label">Tanggal</label>
+                                    <input type="date" class="form-control" name="tanggal">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="nip" class="form-label">Pegawai</label>
+                                    <select type="text" class="form-control" name="nip" placeholder="Input ID Pegawai">
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->nip }}">NIP: {{ $user->nip }} - Nama : {{ $user->name }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-success mb-3">Simpan</button>
+                            </form>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -673,11 +395,11 @@
     </script>
 
 
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/sidebarmenu.js"></script>
-    <script src="assets/js/app.min.js"></script>
-    <script src="assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
     <!-- solar icons -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
