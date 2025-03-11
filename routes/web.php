@@ -6,6 +6,8 @@ use App\Http\Controllers\AktivitasController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+URL::forceScheme('https');  
+
 Route::get('/', function () {
     return redirect()->route(Auth::check() ? 'home' : 'login');
 });
