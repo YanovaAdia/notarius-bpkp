@@ -6,7 +6,7 @@ use App\Http\Controllers\AktivitasController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-
+# comment untuk running local
 URL::forceScheme('https');
 
 Route::get('/', function () {
