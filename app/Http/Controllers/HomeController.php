@@ -28,17 +28,20 @@ class HomeController extends Controller
 
     public function daftar()
     {
+        $id_tim = DB::table('keanggotaan')->where('nip_anggota', Auth::user()->nip)->pluck('id_tim');
+        
         $aktivitas_user = DB::table('aktivitas')
             ->join('users', 'aktivitas.nip', '=', 'users.nip')
-            ->select('aktivitas.*', 'users.nip', 'users.name', 'users.email', 'users.jabatan', 'users.role', 'users.foto_profil');
+            ->join('keanggotaan', 'users.nip', '=', 'keanggotaan.nip_anggota')
+            ->select('aktivitas.*', 'users.nip', 'users.name', 'users.email', 'users.jabatan', 'users.role', 'users.foto_profil', 'keanggotaan.id_tim');
 
         if(Auth::user()->role=='USER'){
-            $aktivitas_user = $aktivitas_user->where('aktivitas.nip', Auth::user()->nip);
+            $aktivitas_user = $aktivitas_user->where('keanggotaan.id_tim', $id_tim);
         }
 
         $aktivitas_user = $aktivitas_user->orderBy('tanggal', 'asc')
             ->get();
-        
+
         return view('daftar', compact('aktivitas_user'));
     }
 

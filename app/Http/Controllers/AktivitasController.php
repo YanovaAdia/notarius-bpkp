@@ -91,11 +91,13 @@ class AktivitasController extends Controller
 
     public function generatePdf(Request $request)
     {
+        $id_tim = DB::table('keanggotaan')->where('nip_anggota', Auth::user()->nip)->pluck('id_tim');
+
         $items = DB::table('aktivitas')
             ->join('users', 'aktivitas.nip', '=', 'users.nip')
             ->join('tim', 'aktivitas.id_tim', '=', 'tim.id')
+            ->join('keanggotaan', 'users.nip', '=', 'keanggotaan.nip_anggota')
             ->orderBy('tanggal', 'asc');
-        
     
         if ($request->searchInput != '') {
             $items = $items->where('nama_aktivitas','like', '%'.$request->searchInput.'%')->orWhere('instruksi_aktivitas', 'like', '%'.$request->searchInput.'%');
@@ -110,7 +112,7 @@ class AktivitasController extends Controller
         }
 
         if (Auth::user()->role=='USER') {
-            $items = $items->where('aktivitas.nip', Auth::user()->nip);
+            $items = $items->where('keanggotaan.id_tim', $id_tim);
         }
         
         $items = $items->get();
